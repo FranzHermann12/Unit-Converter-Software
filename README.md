@@ -2,6 +2,10 @@
 
 A high-precision scientific and engineering unit conversion application built with Python and Tkinter.
 
+## Screenshot
+
+![Universal Converter – Engineering Edition](assets/screenshot.png)
+
 ## Overview
 
 Universal Converter is a desktop unit conversion application inspired by the classic Microsoft Convert interface. It combines a traditional Windows-style graphical interface with a high-precision conversion engine.
