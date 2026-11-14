@@ -1,5 +1,8 @@
 
-from decimal import Decimal
+from decimal import Decimal, getcontext
+
+# Set precision before calculating any conversion factors.
+getcontext().prec = 50
 
 
 UNIT_DATABASE = {
@@ -170,6 +173,69 @@ UNIT_DATABASE = {
         "Kilogram per Litre": Decimal("1000"),
         "Pound per Cubic Foot": Decimal("16.01846337396"),
         "Pound per Cubic Inch": Decimal("27679.9047102"),
+    },
+
+    # FREQUENCY — Base: hertz
+    "Frequency": {
+        "Hertz": Decimal("1"),
+        "Kilohertz": Decimal("1000"),
+        "Megahertz": Decimal("1000000"),
+        "Gigahertz": Decimal("1000000000"),
+        "Terahertz": Decimal("1000000000000"),
+        "Revolutions per Minute": Decimal("0.01666666666666666666666666667"),
+        "Revolutions per Second": Decimal("1"),
+    },
+
+    # ANGLE — Base: degree
+    "Angle": {
+        "Degree": Decimal("1"),
+        "Radian": Decimal("57.29577951308232087679815481"),
+        "Gradian": Decimal("0.9"),
+        "Arcminute": Decimal("0.01666666666666666666666666667"),
+        "Arcsecond": Decimal("0.0002777777777777777777777778"),
+        "Revolution": Decimal("360"),
+    },
+
+    # ELECTRICAL CURRENT — Base: ampere
+    "Current": {
+        "Ampere": Decimal("1"),
+        "Milliampere": Decimal("0.001"),
+        "Microampere": Decimal("0.000001"),
+        "Kiloampere": Decimal("1000"),
+    },
+
+    # VOLTAGE — Base: volt
+    "Voltage": {
+        "Volt": Decimal("1"),
+        "Millivolt": Decimal("0.001"),
+        "Kilovolt": Decimal("1000"),
+        "Megavolt": Decimal("1000000"),
+    },
+
+    # ELECTRICAL RESISTANCE — Base: ohm
+    "Resistance": {
+        "Ohm": Decimal("1"),
+        "Milliohm": Decimal("0.001"),
+        "Kiloohm": Decimal("1000"),
+        "Megohm": Decimal("1000000"),
+    },
+
+    # CAPACITANCE — Base: farad
+    "Capacitance": {
+        "Farad": Decimal("1"),
+        "Millifarad": Decimal("0.001"),
+        "Microfarad": Decimal("0.000001"),
+        "Nanofarad": Decimal("0.000000001"),
+        "Picofarad": Decimal("0.000000000001"),
+    },
+
+    # ELECTRIC CHARGE — Base: coulomb
+    "Charge": {
+        "Coulomb": Decimal("1"),
+        "Millicoulomb": Decimal("0.001"),
+        "Microcoulomb": Decimal("0.000001"),
+        "Ampere-hour": Decimal("3600"),
+        "Milliampere-hour": Decimal("3.6"),
     },
 
 }
