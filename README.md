@@ -129,5 +129,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 GitHub: https://github.com/FranzHermann12
 
 ---
-
-*Built as an independent Python software engineering project.*
