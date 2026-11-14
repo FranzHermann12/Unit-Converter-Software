@@ -4,6 +4,5 @@ __pycache__/
 venv/
 build/
 dist/
-*.spec
 data/conversion_history.json
 data/favourites.json
