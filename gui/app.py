@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import json
+import sys
 from pathlib import Path
 
 from data.units import UNIT_DATABASE
@@ -24,12 +25,14 @@ class UniversalConverterApp:
         self.root.minsize(760, 560)
         self.root.configure(bg="#f0f0f0")
 
-        # Application icon
-        icon_path = (
-            Path(__file__).resolve().parent.parent
-            / "assets"
-            / "icon.ico"
-        )
+        # Resolve application resources for Python and PyInstaller.
+        if getattr(sys, "frozen", False):
+            self.base_path = Path(sys._MEIPASS)
+        else:
+            self.base_path = Path(__file__).resolve().parent.parent
+
+        # Load application icon.
+        icon_path = self.base_path / "assets" / "icon.ico"
 
         if icon_path.exists():
             try:
@@ -153,7 +156,6 @@ class UniversalConverterApp:
             pady=8
         )
 
-        # Category buttons
         self.category_frame = tk.Frame(
             main,
             bg="#f0f0f0"
@@ -197,7 +199,6 @@ class UniversalConverterApp:
 
             self.category_buttons[category] = button
 
-        # Unit selection area
         selection_area = tk.Frame(
             main,
             bg="#f0f0f0",
@@ -259,7 +260,7 @@ class UniversalConverterApp:
             yscrollcommand=input_scroll.set
         )
 
-        # Direction indicator and swap button
+        # Direction indicator
         direction_frame = tk.Frame(
             selection_area,
             bg="#f0f0f0",
@@ -524,7 +525,7 @@ class UniversalConverterApp:
         self.perform_conversion()
 
     # --------------------------------------------------
-    # CONVERSION ENGINE CONNECTION
+    # CONVERSION ENGINE
     # --------------------------------------------------
 
     def format_result(self, result):
@@ -563,7 +564,8 @@ class UniversalConverterApp:
                 to_unit
             )
 
-            self.set_output(self.format_result(result))
+            formatted_result = self.format_result(result)
+            self.set_output(formatted_result)
 
             self.add_to_history(
                 value,
@@ -582,7 +584,7 @@ class UniversalConverterApp:
         self.output_value.config(state="readonly")
 
     # --------------------------------------------------
-    # CONVERSION HISTORY
+    # HISTORY
     # --------------------------------------------------
 
     def add_to_history(self, value, from_unit, to_unit, result):
